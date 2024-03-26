@@ -1,20 +1,27 @@
-
-
 .login-form {
-  background-color: #f0efef;
-  background-repeat: no-repeat;
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(1100px); /* Apply blur effect */
   overflow-y: hidden;
+
+  // Background gradient overlay
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, rgba(75, 0, 130, 0.7), rgba(144, 238, 144, 0.7), rgba(255, 165, 0, 0.7)); // Adjusted colors and opacity
+    z-index: -1; // Ensure the gradient stays behind other content
+  }
 
   .wrapper {
     width: 320px;
     height: 370px;
-    background: rgb(255, 255, 255);
+    background-color: #fff;
     color: #000000;
     border-radius: 60px;
     padding: 10px 30px;
@@ -22,16 +29,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -60%);
-    backdrop-filter: blur(10px); /* Apply blur effect */
+    backdrop-filter: blur(10px); // Apply blur effect to the wrapper
+    z-index: 1; // Ensure the wrapper stays above the gradient
 
-    img{
+    img {
       width: 80px;
       height: 80px;
       background-color: white;
       margin: 0 auto;
     }
-    
-    .logo{
+
+    .logo {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -98,10 +106,10 @@
       border: none;
       outline: none;
       border-radius: 40px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
       cursor: pointer;
       font-size: 14px;
-      color: #333;
+      color: #1c1b1b;
       font-weight: 700;
       margin-top: 10px;
     }
