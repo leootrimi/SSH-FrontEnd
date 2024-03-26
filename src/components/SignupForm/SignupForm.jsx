@@ -32,17 +32,53 @@ const SignupForm = () => {
   return (
     <div className="signup-form"> {/* Add the 'signup-form' class */}
       <div className="wrapper"> {/* Add the 'wrapper' class */}
-        <h1>Sign Up</h1>
+        <h1>Enter your personal details</h1>
         <form onSubmit={handleSubmit}>
           {/* Input fields */}
+          <div className="input-row">
+          <div className="input-box">
           <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
+          </div>
+
+          <div className="input-box">
           <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
+          </div>
+          </div>
+
+
+          <div className="input-row">
+          <div className="input-box">
           <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder="Username" />
-          <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+          </div>
+
+          <div className="input-box">
           <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-          <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} placeholder="Phone Number" />
+          </div>
+          </div>
+
+
+          <div className="input-row">
+          <div className="input-box">
+          <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+          </div>
+
+          <div className="input-box">
+          <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Confirm password" />
+          </div>
+          </div>
+
+
+
+         
+          <div className="input-row">
+          <div className="input-box">
           <input type="text" name="state" value={formData.state} onChange={handleChange} placeholder="State" />
-          <input type="text" name="zipCode" value={formData.zipCode} onChange={handleChange} placeholder="Zip Code" />
+          </div>
+          <div className="input-box">
+          <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} placeholder="Phone Number" />
+          </div>
+          </div>
+
           <button type="submit">Sign Up</button>
         </form>
       </div>
