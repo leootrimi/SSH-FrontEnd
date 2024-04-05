@@ -8,6 +8,7 @@ import ShopCategory from './components/Shop/ShopCategory.jsx';
 import Product from "./components/Product/Product.jsx"
 import Cart from "./pages/Cart.jsx"
 import SignupForm from './components/SignupForm/SignupForm.jsx';
+import AccountDetails from './components/Account/AccountDetails.jsx';
 function App() {
   return (
     <Router>
@@ -26,6 +27,7 @@ function App() {
           <Route path="/cart" element={<Cart/>} />   
           <Route path="/login" element={<Login />} />   
           <Route path="/register" element={<SignupForm />} />   
+          <Route path="/account" element={<AccountDetails />} />   
         </Routes>
       </div>
     </Router>

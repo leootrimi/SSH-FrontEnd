@@ -27,6 +27,7 @@ const SignupForm = () => {
     } catch (error) {
       console.error(error); // Handle error
     }
+    
   };
 
   return (

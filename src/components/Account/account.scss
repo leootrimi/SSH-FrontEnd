@@ -1,0 +1,65 @@
+.account-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .sidebar ul li a:hover {
+    color: #007bff;
+  }
+  
+  .account-info {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .account-info form {
+    max-width: 400px;
+  }
+  
+  .account-info div {
+    margin-bottom: 20px;
+  }
+  
+  .account-info label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .account-info input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .account-info input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
