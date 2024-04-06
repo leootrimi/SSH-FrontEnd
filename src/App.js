@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from "./pages/Home"
 import NavBar from './components/NavBar/NavBar.jsx';
+import Footer from "./components/Footer/Footer.jsx"
 import Login from './components/LoginForm/Login.jsx';
 import './App.css';
 import ShopCategory from './components/Shop/ShopCategory.jsx';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/register" element={<SignupForm />} />   
           <Route path="/account" element={<AccountDetails />} />   
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

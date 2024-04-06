@@ -62,4 +62,34 @@
     outline: none;
     border-color: #007bff;
   }
+
+
+  .savebutton {
+    background-color: #f8f8f8;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 10em;
+    border-radius: 1rem;
+    color: lightcoral;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+   }
+   
+   .savebutton:active {
+    color: white;
+    box-shadow: 0 0.2rem #dfd9d9;
+    transform: translateY(0.2rem);
+   }
+   
+   .savebutton:hover:not(:disabled) {
+    background: lightcoral;
+    color: white;
+    text-shadow: 0 0.1rem #bcb4b4;
+   }
+   
+   .savebutton:disabled {
+    cursor: auto;
+    color: grey;
+   }
   
