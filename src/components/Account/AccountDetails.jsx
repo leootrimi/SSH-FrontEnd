@@ -39,7 +39,7 @@ const AccountDetails = () => {
 
             
 
-                const response = await fetch(`http://localhost:8080/users/${username}`, {
+                const response = await fetch(`http://localhost:8080/${username}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ const AccountDetails = () => {
 
                 const username1 = decoded.sub;
                 
-            const response = await fetch(`http://localhost:8080/users/update/${username1}`, {
+            const response = await fetch(`http://localhost:8080/update/${username1}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

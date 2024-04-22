@@ -10,6 +10,7 @@ import Product from "./components/Product/Product.jsx"
 import Cart from "./pages/Cart.jsx"
 import SignupForm from './components/SignupForm/SignupForm.jsx';
 import AccountDetails from './components/Account/AccountDetails.jsx';
+import ChangePass from './components/Account/ChangePass.jsx'
 function App() {
   return (
     <Router>
@@ -29,6 +30,7 @@ function App() {
           <Route path="/login" element={<Login />} />   
           <Route path="/register" element={<SignupForm />} />   
           <Route path="/account" element={<AccountDetails />} />   
+          <Route path="/account/password" element={<ChangePass />} />   
         </Routes>
         <Footer />
       </div>
