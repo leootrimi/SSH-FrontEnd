@@ -16,7 +16,7 @@ const Login = () => {
   }
 
   const gotofacebook = () => {
-    window.location.href = 'https://italiano-run-actors-kai.trycloudflare.com  ';
+    window.location.href = 'https://moderators-volt-cooling-audio.trycloudflare.com';
   }
 
   const handleLogin = async (e) => {
