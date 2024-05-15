@@ -1,12 +1,12 @@
-/* MenPage.scss */
-$primary-color: #007bff;
+// WomenPage.scss
+$primary-color: hsla(248, 26%, 48%, 0.753); // pink
 $secondary-color: #333;
 $accent-color: #555;
 
 $submenu-bg-color: #f2f2f2;
 $submenu-border-color: #ddd;
 
-.men-page {
+.women-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,6 @@ $submenu-border-color: #ddd;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  position: relative; /* Add position relative to parent for relative positioning */
 
   .section-title {
     color: $secondary-color;
@@ -37,14 +36,14 @@ $submenu-border-color: #ddd;
     padding: 50px;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
-
+  
     &:hover {
       transform: translateY(-5px);
     }
 
     .product-image {
-      width: 200px;
-      height: 200px;
+      width: 250px;
+      height: 250px;
       object-fit: cover;
     }
 
@@ -63,7 +62,7 @@ $submenu-border-color: #ddd;
       }
 
       button {
-        background-color:  #007bff;
+        background-color: $primary-color;
         color: white;
         border: none;
         padding: 8px 16px;
@@ -76,38 +75,6 @@ $submenu-border-color: #ddd;
         }
       }
     }
-  }
-
-  /* Adjust bottom margin for pagination */
-  margin-bottom: 100px; /* Add margin to make room for pagination */
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute; /* Position relative to bottom of product list */
-  bottom: -60px; /* Move pagination up */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Adjust horizontal centering */
-}
-
-.pagination button {
-  background-color:#917d9d;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  margin-right: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: darken($primary-color, 20%);
-  }
-
-  &:focus {
-    outline: none;
   }
 }
 

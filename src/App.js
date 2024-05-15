@@ -1,16 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from "./pages/Home"
-import NavBar from './components/NavBar/NavBar.jsx';
-import Footer from "./components/Footer/Footer.jsx"
-import Login from './components/LoginForm/Login.jsx';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import ShopCategory from './components/Shop/ShopCategory.jsx';
-import Product from "./components/Product/Product.jsx"
-import Cart from "./pages/Cart.jsx"
-import SignupForm from './components/SignupForm/SignupForm.jsx';
 import AccountDetails from './components/Account/AccountDetails.jsx';
-import ChangePass from './components/Account/ChangePass.jsx'
+import Footer from "./components/Footer/Footer.jsx";
+import Login from './components/LoginForm/Login.jsx';
+import NavBar from './components/NavBar/NavBar.jsx';
+import Product from "./components/Product/Product.jsx";
+import ShopCategory from './components/Shop/ShopCategory.jsx';
+import SignupForm from './components/SignupForm/SignupForm.jsx';
+import Cart from "./pages/Cart.jsx";
+import HomePage from "./pages/Home";
+import MenPage from "./pages/MenPage.jsx";
+import WomenPage from "./pages/WomenPage.jsx";
+
+import ChangePass from './components/Account/ChangePass.jsx';
 function App() {
   return (
     <Router>
@@ -18,8 +21,9 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />   
-          <Route path="/women" element={<ShopCategory category="women" />} />   
-          <Route path="/men" element={<ShopCategory category="men" />} />   
+          <Route path="/women" element={<WomenPage/> }/> 
+          <Route path="/men" element={<MenPage />} />
+
           <Route path="/kids" element={<ShopCategory category="kids" />} />   
 
           <Route path="/product" element={<Product/>}>   

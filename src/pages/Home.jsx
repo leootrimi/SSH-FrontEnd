@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import image1 from "../assets/images/Home.png"
-import next from "../assets/images/next.png"
-import cardimg from "../assets/images/4.png"
 import {
+  CButton,
   CCard,
   CCardBody,
   CCardImage,
   CCardText,
-  CCardTitle,
-  CButton
+  CCardTitle
 } from '@coreui/react';
+import React, { useState } from 'react';
+import cardimg from "../assets/images/4.png";
+import image1 from "../assets/images/Home.png";
+import next from "../assets/images/next.png";
 import "./home.scss";
-import card from '@material-tailwind/react/theme/components/card';
 
 const Home = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -48,7 +47,7 @@ const Home = () => {
               <CCardText className='card-text'>
                 Some quick example text to build on the card title and make up the bulk of the card's content.
               </CCardText>
-              <CButton className='card-button' href="#">Go somewhere</CButton>
+              <CButton className='card-button' href="/women">Go somewhere</CButton>
             </CCardBody>
           </CCard>
         </div>
@@ -61,7 +60,7 @@ const Home = () => {
               <CCardText className='card-text'>
                 Some quick example text to build on the card title and make up the bulk of the card's content.
               </CCardText>
-              <CButton className='card-button' href="#">Go somewhere</CButton>
+              <CButton className='card-button' href="/kids">Go somewhere</CButton>
             </CCardBody>
           </CCard>
         </div>
@@ -74,7 +73,7 @@ const Home = () => {
               <CCardText className='card-text'>
                 Some quick example text to build on the card title and make up the bulk of the card's content.
               </CCardText>
-              <CButton className='card-button' href="#">Go somewhere</CButton>
+              <CButton className='card-button' href="/men">Go somewhere</CButton>
             </CCardBody>
           </CCard>
         </div>
