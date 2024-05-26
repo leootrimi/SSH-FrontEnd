@@ -15,7 +15,7 @@ import HomePage from "./pages/Home";
 import MenPage from "./pages/MenPage.jsx";
 import WomenPage from "./pages/WomenPage.jsx";
 import Payment from "./pages/Payment.jsx";
-import EcommerceCard from "./components/Product/EcommerceCard.jsx"
+import ShoppingCart from "./pages/ShoppingCart.jsx"
 
 import ChangePass from './components/Account/ChangePass.jsx';
 
@@ -44,7 +44,7 @@ function App() {
           <Route path="/account" element={<AccountDetails />} />   
           <Route path="/account/password" element={<ChangePass />} />  
 
-          <Route path='/cardproduct' element={<EcommerceCard />} />
+          <Route path='/cartt' element={<ShoppingCart />} />
 
         </Routes>
         <Footer />

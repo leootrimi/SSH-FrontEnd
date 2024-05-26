@@ -1,20 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "./styles.css";
 import { Link, useNavigate } from "react-router-dom";
 import { GrSecure } from "react-icons/gr";
+import { jwtDecode } from "jwt-decode";
 import { usePaymentInputs } from "react-payment-inputs";
 
 export default function Form() {
   const form = useRef();
   const navigate = useNavigate();
-  const {
-    meta,
-    getCardNumberProps,
-    getExpiryDateProps,
-    getCVCProps
-  } = usePaymentInputs();
+  const { meta, getCardNumberProps, getExpiryDateProps, getCVCProps } = usePaymentInputs();
 
   const [checked, setChecked] = React.useState(true);
   const [cardNumber, setCardNumber] = React.useState("");
@@ -23,6 +19,36 @@ export default function Form() {
     cvc: "",
     NomDuClient: ""
   });
+  const [price, setPrice] = useState(null);
+
+  useEffect(() => {
+    const fetchCartCount = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const decoded = jwtDecode(token);
+            const username = decoded.sub;
+            const response = await fetch(`http://localhost:8080/carts/totalPrice/${username}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log(data);
+            setPrice(data);
+        } catch (error) {
+            console.error("Error fetching cart count:", error);
+        }
+    };
+
+    fetchCartCount();
+}, []);
 
   const handleChange = (e) => {
     setDetails((prevFormDetails) => {
@@ -34,6 +60,7 @@ export default function Form() {
 
     console.log(details);
   };
+
   const handleChangeCardNumber = (e) => {
     setCardNumber(
       e.target.value
@@ -42,6 +69,7 @@ export default function Form() {
         .trim()
     );
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -76,6 +104,7 @@ export default function Form() {
       navigate("/Validation");
     }
   };
+
   const handleCheck = () => {
     console.log("ok");
 
@@ -90,8 +119,8 @@ export default function Form() {
           <GrSecure className="secureIcon" />
         </div>
         <div className="Amont">
-          <p> Amout : </p>
-          <label className="price">100$</label>
+          <p> Amount: </p>
+          <label className="price">{price ? `$${price}` : "Loading..."}</label>
         </div>
       </header>
       <main>
@@ -107,8 +136,7 @@ export default function Form() {
         <div className="NumDeCarte">
           <label> Card Number </label>
           <input
-            // {...getCardNumberProps({ onChange: handleChangeCardNumber })}
-            onChange={handleChangeCardNumber}
+            {...getCardNumberProps({ onChange: handleChangeCardNumber })}
             placeholder="Valid Card Number"
             name="cardNumber"
             maxLength="19"
@@ -136,15 +164,10 @@ export default function Form() {
         <div className="terme">
           <input type="checkbox" onChange={handleCheck} />
           <p className="TermeConfidentialite">
-            Accept terms of <Link href="#">confidientiality</Link>
+            Accept terms of <Link to="#">confidientiality</Link>
           </p>
         </div>
-        <input
-          disabled={checked}
-          type="submit"
-          value="Submit"
-          className="btn"
-        />
+        <input disabled={checked} type="submit" value="Submit" className="btn" />
       </main>
       <footer>
         <img className="img1" src="/images/methode.jpg" alt="" />

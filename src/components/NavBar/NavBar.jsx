@@ -28,6 +28,10 @@ const NavBar = () => {
         setShowDropdown(!showDropdown);
     };
 
+    const cartClikc = () => {
+        navigate('/cartt');
+    }
+
     useEffect(() => {
         const fetchCartCount = async () => {
             try {
@@ -73,7 +77,7 @@ const NavBar = () => {
             <div className="nav-login-cart">
                 {token ? (
                     <>
-                    <Link to="/cart"><img className="cart-icon" src={cart_icon} alt="Cart" /></Link>
+                    <Link to="/cart"><img className="cart-icon" src={cart_icon} onClick={cartClikc} alt="Cart" /></Link>
                         <div className="cart-count">{cartCount}</div>
                         <div className="profile-image" onClick={toggleDropdown}>
                             <img src={user_icon} alt="Profile" /> 
