@@ -14,6 +14,8 @@ import Cart from "./pages/Cart.jsx";
 import HomePage from "./pages/Home";
 import MenPage from "./pages/MenPage.jsx";
 import WomenPage from "./pages/WomenPage.jsx";
+import Payment from "./pages/Payment.jsx";
+import EcommerceCard from "./components/Product/EcommerceCard.jsx"
 
 import ChangePass from './components/Account/ChangePass.jsx';
 
@@ -31,7 +33,7 @@ function App() {
 
           <Route path="/kids" element={<ShopCategory category="kids" />} />   
           <Route path="/contact" element={<ContactForm/>} />
-
+          <Route path='/Checkout' element={<Payment />} />
           <Route path="/product" element={<Product />}>
             <Route path=":productId" element={<Product />} /> 
           </Route>  
@@ -40,7 +42,10 @@ function App() {
           <Route path="/login" element={<Login />} />   
           <Route path="/register" element={<SignupForm />} />   
           <Route path="/account" element={<AccountDetails />} />   
-          <Route path="/account/password" element={<ChangePass />} />   
+          <Route path="/account/password" element={<ChangePass />} />  
+
+          <Route path='/cardproduct' element={<EcommerceCard />} />
+
         </Routes>
         <Footer />
       </div>
