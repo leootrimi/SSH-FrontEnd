@@ -12,11 +12,12 @@ const ProductListing = () => {
 
 
 const fetchProducts = async () => {
-
-    const response = await axios.get("https://fakestoreapi.com/products").catch((err) => {
-        console.log("Err", err);
-    });
+    try {
+        const response = await axios.get('http://localhost:8080/api/getproducts');
         dispatch(setProducts(response.data));
+    } catch (error) {
+        console.error('Error fetching products:', error);
+    }
 };
 
 useEffect(() =>{
