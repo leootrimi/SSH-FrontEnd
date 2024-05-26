@@ -68,6 +68,7 @@ const NavBar = () => {
                 <li><Link to="/women">Women</Link></li>
                 <li><Link to="/men">Men</Link></li>
                 <li><Link to="/kids">Kids</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
             </ul>
             <div className="nav-login-cart">
                 {token ? (
