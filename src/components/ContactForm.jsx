@@ -1,5 +1,3 @@
-// components/ContactForm.js
-
 import axios from 'axios';
 import React, { useState } from 'react';
 import './ContactForm.scss';
@@ -19,9 +17,15 @@ const ContactForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8080/contactus', formData); 
+            const token = localStorage.getItem('token'); // Merr tokenin nga localStorage 
+            const config = {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            };
+            await axios.post('http://localhost:8080/contactus', formData, config); // Kërkesa e dërguar me token
             alert('Your message has been sent successfully!');
-            // Clear form fields after successful submission
+            // Pastro formën pas suksesit
             setFormData({
                 name: '',
                 email: '',
@@ -84,3 +88,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
