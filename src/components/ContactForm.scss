@@ -1,81 +1,60 @@
-// components/ContactForm.scss
-
 .contact-form-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .contact-heading {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .contact-form label {
-    font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%; // Adjust width for wider form
+  max-width: 700px; // Adjust max-width as needed
+  margin: 0 auto;
+  padding: 1.5rem; // Reduce padding for smaller size
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #e9ecef; // Change background color (light gray here)
+}
+
+.contact-heading {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  label {
     margin-bottom: 0.5rem;
+    font-weight: bold;
   }
-  
-  .contact-form input,
-  .contact-form textarea {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
+
+  input,
+  textarea {
+    padding: 0.5rem 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-bottom: 1rem;
+    font-family: inherit;
+
+    &:focus {
+      outline: 1px solid #007bff;
+    }
   }
-  
-  .contact-form textarea {
-    min-height: 150px;
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
   }
-  
-  .contact-form button {
-    background-color: #007bff;
+
+  button {
+    background-color: #007bff; // Adjust button color if needed
     color: #fff;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 2rem; // Adjust button padding for smaller size
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #0067cc;
+    }
   }
-  
-  .contact-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  .contact-form button:active {
-    background-color: #0056b3;
-    transform: translateY(1px);
-  }
-  
-  .contact-form button:focus {
-    outline: none;
-  }
-  
-  .contact-info {
-    text-align: center;
-    margin-top: 1.5rem;
-  }
-  
-  .contact-info p {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .contact-info a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .contact-info a:hover {
-    text-decoration: underline;
-  }
-  
+}
