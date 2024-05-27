@@ -39,9 +39,8 @@ const ProductListing = ({ categoryID }) => {
 
     useEffect(() => {
         fetchProducts();
-    }, [categoryID]);  // Add categoryID as a dependency
+    }, [categoryID]); 
 
-    console.log('Products: ', products);
     return (
         <div className='ui grid container'>
             <ProductComponent products={products} />
