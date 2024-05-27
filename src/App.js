@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import AccountDetails from './components/Account/AccountDetails.jsx';
-import ContactForm from './components/ContactForm';
+import ContactForm from './components/Contact/ContactForm.jsx';
 import Footer from "./components/Footer/Footer.jsx";
 import Login from './components/LoginForm/Login.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
