@@ -1,0 +1,18 @@
+import React, { useEffect } from 'react';
+import useCheckAuth from '../middleware/checkAuth';
+
+const MyComponent = () => {
+  const checkAuth = useCheckAuth();
+
+  useEffect(() => {
+    checkAuth();
+  }, []); // Mund të shtoni ndonjë dependency nëse është e nevojshme
+
+  return (
+    <div>
+      {/* Përmbajtja e komponentit */}
+    </div>
+  );
+};
+
+export default MyComponent;
