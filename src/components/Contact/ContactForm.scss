@@ -5,6 +5,8 @@
   width: 80%; // Adjust width for wider form
   max-width: 700px; // Adjust max-width as needed
   margin: 0 auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
   padding: 1.5rem; // Reduce padding for smaller size
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -49,6 +51,8 @@
     color: #fff;
     padding: 0.7rem 2rem; // Adjust button padding for smaller size
     border: none;
+    margin: 0 auto;
+    width: 50%;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;

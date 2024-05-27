@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import 'semantic-ui-css/semantic.min.css';
 import { Link } from "react-router-dom";
+import "./PC.scss";
+
 
 const ProductComponent = () => {
     const products = useSelector((state) => state.allProducts.products);
