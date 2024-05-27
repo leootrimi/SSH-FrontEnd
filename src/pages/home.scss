@@ -5,9 +5,11 @@
 .image-container {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  //max-width: 1200px;
   margin: 0 auto;
   overflow: hidden; // Ensure that any overflow is hidden
+  box-shadow: 0 4px 8px rgba(1, 1, 1, 0.7);
+
 }
 
 .background {
@@ -88,7 +90,7 @@
 }
 
 .card-button {
-  background-color: #f5f5dc; // Hint of beige
+  background-color: white; /* Set initial background color to white */
   border: none;
   padding: 10px 20px;
   font-size: 1rem;
@@ -102,8 +104,8 @@
 }
 
 .card-button:hover:not(:disabled) {
-  background-color: #d4d4a1; // Darker hint of beige
-  color: rgb(131, 110, 110);
+  background-color: #d4d4a1; /* Change background color to gray on hover */
+  color: white; /* Optionally change text color to white on hover */
 }
 
 .card-button:active {
@@ -115,5 +117,8 @@
 .card-button:disabled {
   cursor: not-allowed;
   color: grey;
-  background-color: #f5f5dc; // Hint of beige
+  background-color: white; /* Keep the background color to white */
 }
+
+
+

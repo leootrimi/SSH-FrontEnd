@@ -11,14 +11,6 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   
-  const gotoGoogle = () => {
-    window.location.href = 'https://free-drawn-vanilla-cities.trycloudflare.com';
-  }
-
-  const gotofacebook = () => {
-    window.location.href = 'https://database-sun-federal-twice.trycloudflare.com';
-  }
-
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -77,17 +69,9 @@ const Login = () => {
           <button type="submit">Login</button>
         
         </form>
-          <div className="social">
-                <button  class="loginBtn loginBtn--facebook" onClick={gotofacebook} >
-          Login with Facebook
-        </button>
-
-        <button onClick={gotoGoogle} class="loginBtn loginBtn--google">
-          Login with Google
-        </button>
         </div>
       </div>
-    </div>
+   
   );
 };
 

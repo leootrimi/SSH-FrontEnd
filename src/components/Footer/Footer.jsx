@@ -19,10 +19,11 @@ const Footer = () => {
           <p>Phone: +123456789</p>
           <p>Address: 123, Street Name, City, Country</p>
         </div>
-      </div>
-      <div className="copyright">
+        <div className="copyright">
         <p>&copy; 2024 FindAll. All rights reserved.</p>
       </div>
+      </div>
+      
     </footer>
   );
 }
