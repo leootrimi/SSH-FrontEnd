@@ -22,7 +22,7 @@ export default function Form() {
     NomDuClient: ""
   });
   const [price, setPrice] = useState(null);
-
+  
   useEffect(() => {
     const fetchCartCount = async () => {
         try {
@@ -107,7 +107,7 @@ export default function Form() {
 
     const product = localStorage.getItem("products", )
     const size = JSON.parse(product)
-    console.log(size.length);
+    console.log(size);
 
     const orderData = {
       date: formattedDate,
@@ -130,6 +130,45 @@ export default function Form() {
     } catch (error) {
         console.error('Error saving payment data:', error);
     }
+
+
+
+    const product = localStorage.getItem("products", )
+    const size = JSON.parse(product)
+    size.forEach(async size => {
+      try {
+        const token = localStorage.getItem('token');
+        const decoded = jwtDecode(token);
+        const username = decoded.sub;
+          const ordersData = {
+            id: size.id,
+            title: size.title,
+            price: size.price,
+            description: size.description,
+            image: size.image,
+            category: size.category.id
+          }
+
+          console.log(ordersData);
+          const response = await fetch('http://localhost:8080/sold', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify(ordersData)
+          });
+  
+          if (response.ok) {
+              console.log('Product sent successfully:', product);
+          } else {
+              console.error('Failed to send product:', product);
+          }
+      } catch (error) {
+          console.error('Error sending product:', error);
+      }
+  });
+
   };
   
 
