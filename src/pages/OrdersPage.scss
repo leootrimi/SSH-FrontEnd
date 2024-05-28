@@ -26,7 +26,7 @@ width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add box shadow */
 }
 
-.order-box:hover, .order-box1:hover {
+.order-box:hover{
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Increase box shadow on hover */
 }
@@ -46,6 +46,7 @@ width: 100%;
 .product-list-container {
   width: 100%;
   margin-top: 20px;
+  margin-left: 25px;
 }
 
 .products-list-title {
@@ -107,12 +108,25 @@ width: 100%;
 .order-box1 {
   width: 20%;
   padding: 20px;
+  border-radius: 10%;
   margin-top: 4%;
   margin-bottom: 1%;
   margin-right: 5%;
   border-radius: 5px;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
-  background: linear-gradient(135deg, #ff8c00, #ff0080);
+  background-color: #f4eeee;
+  color: #333; /* Dark gray color for the text */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add box shadow */
+}
+
+.order-box1 h2 {
+  font-size: 40px;
+  color: #b99c78; /* Vivid orange color for the heading */
+  margin-top: 40%;
+}
+
+.order-box1 p {
+  font-size: 45px;
+  color: #626262; /* Dark gray color for the paragraph */
 }

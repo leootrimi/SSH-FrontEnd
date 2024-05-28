@@ -67,8 +67,8 @@ function OrdersPage() {
         </ul>
       </div>
       <div className="order-box1">
-          <h2>Product Bought</h2>
-          <p>5</p>
+          <h2>You made the best choice</h2>
+          <p>Thank you,Find All</p>
         </div>
         </div>
 
