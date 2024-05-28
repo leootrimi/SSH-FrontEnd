@@ -18,12 +18,9 @@ import Payment from "./pages/Payment.jsx";
 import ShoppingCart from "./pages/ShoppingCart.jsx"
 import OrdersPage from "./pages/OrdersPage.jsx"
 import ChangePass from './components/Account/ChangePass.jsx';
-import checkAuth from './middleware/checkAuth';
 
 const AppRoutes = () => {
   const location = useLocation();
-  const authMiddleware = checkAuth();
-  authMiddleware(location);
 
   return (
     <Routes>
