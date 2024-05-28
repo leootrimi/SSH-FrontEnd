@@ -16,6 +16,7 @@ import MenPage from "./pages/MenPage.jsx";
 import WomenPage from "./pages/WomenPage.jsx";
 import Payment from "./pages/Payment.jsx";
 import ShoppingCart from "./pages/ShoppingCart.jsx"
+import OrdersPage from "./pages/OrdersPage.jsx"
 
 import ChangePass from './components/Account/ChangePass.jsx';
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/account/password" element={<ChangePass />} />  
 
           <Route path='/cart' element={<ShoppingCart />} />
+          <Route path='/orders' element={<OrdersPage />} />
 
         </Routes>
         <Footer />
