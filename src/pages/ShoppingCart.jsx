@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import './ShoppingCart.css'; // Import CSS file for styling
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from 'react-router-dom';
 
 function ShoppingCart() {
   const [cart, setCart] = useState([]);
   const [price, setPrice] = useState(null);
   const [data, setData] = useState(null);
+  const navigate = useNavigate();
 
 
   const addToCart = (product) => {
@@ -89,7 +91,26 @@ function ShoppingCart() {
 
         const data = await response.json();
         setData(data);
-        console.log(data);
+        const key = "products";
+        const existingData = localStorage.getItem(key);
+
+          // Check if the existing data is different from the new data
+          if (existingData) {
+              const parsedExistingData = JSON.parse(existingData);
+              const isDifferent = JSON.stringify(parsedExistingData) !== JSON.stringify(data);
+
+              if (isDifferent) {
+                  // The data is different, update localStorage with the new data
+                  localStorage.setItem(key, JSON.stringify(data));
+                  console.log('Data updated in localStorage:', data);
+              } else {
+                  console.log('Data in localStorage is already up to date:', parsedExistingData);
+              }
+          } else {
+              // No existing data, set the new data in localStorage
+              localStorage.setItem(key, JSON.stringify(data));
+              console.log('Data set in localStorage:', data);
+          }
       } catch (error) {
         console.error("Error fetching cart data:", error);
       }
@@ -152,7 +173,9 @@ function ShoppingCart() {
         </span>
       </div>
     </div>
-    <button className="checkout-button">Checkout</button>
+    <button className="checkout-button"  onClick={() => {
+          navigate('/checkout');
+        }}>Checkout</button>
   </div>
 </div>
 
