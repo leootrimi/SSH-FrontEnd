@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { GrSecure } from "react-icons/gr";
 import { jwtDecode } from "jwt-decode";
 import { usePaymentInputs } from "react-payment-inputs";
+import axios from 'axios';
+
 
 export default function Form() {
   const form = useRef();
@@ -20,7 +22,7 @@ export default function Form() {
     NomDuClient: ""
   });
   const [price, setPrice] = useState(null);
-
+  
   useEffect(() => {
     const fetchCartCount = async () => {
         try {
@@ -70,40 +72,105 @@ export default function Form() {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e)=>{
     e.preventDefault();
-    if (
-      (meta.isTouched && meta.error) ||
-      Number(cardNumber.length) < 19 ||
-      cardNumber.trim().length === 0 ||
-      details.expiryDate.trim().length === 0 ||
-      details.cvc.trim().length === 0 ||
-      details.NomDuClient.trim().length === 0 ||
-      checked === true
-    ) {
-      setChecked(true);
-      console.log("not submit");
-    } else {
-      setChecked(false);
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+          throw new Error('No token found');
+      }
+      const decoded = jwtDecode(token);
+      const username = decoded.sub;
+      
+      const currentDate = new Date();
+      const formattedDate = currentDate.toISOString().slice(0, 10); // Format: YYYY-MM-DD
+      
+      const formData = {
+          paymentMethod: "Credit Card",
+          paymentDate: formattedDate,
+          amount: parseFloat(price) + 5.00 + 2.00, 
+          fullName: details.NomDuClient,
+          username: username
+      };
 
-      emailjs
-        .sendForm(
-          "service_pduy8oo",
-          "template_be4vpep",
-          form.current,
-          "d7GFUxt5sOvLttX-o"
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-          },
-          (error) => {
-            console.log(error.text);
-          }
-        );
-      navigate("/Validation");
+      console.log(JSON.stringify(formData));
+      const response = await fetch(`http://localhost:8080/payments`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+  },
+  body: JSON.stringify(formData)
+
+
+});
+
+    const product = localStorage.getItem("products", )
+    const size = JSON.parse(product)
+    console.log(size);
+
+    const orderData = {
+      date: formattedDate,
+      price: price + 7,
+      numberOfProducts: size.length,
+      fullName: username,
+      username: username
     }
+
+    const response1 = await fetch(`http://localhost:8080/orders`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+  },
+  body: JSON.stringify(orderData)
+});
+
+
+    } catch (error) {
+        console.error('Error saving payment data:', error);
+    }
+
+
+
+    const product = localStorage.getItem("products", )
+    const size = JSON.parse(product)
+    size.forEach(async size => {
+      try {
+        const token = localStorage.getItem('token');
+        const decoded = jwtDecode(token);
+        const username = decoded.sub;
+          const ordersData = {
+            id: size.id,
+            title: size.title,
+            price: size.price,
+            description: size.description,
+            image: size.image,
+            category: size.category.id
+          }
+
+          console.log(ordersData);
+          const response = await fetch('http://localhost:8080/sold', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify(ordersData)
+          });
+  
+          if (response.ok) {
+              console.log('Product sent successfully:', product);
+          } else {
+              console.error('Failed to send product:', product);
+          }
+      } catch (error) {
+          console.error('Error sending product:', error);
+      }
+  });
+
   };
+  
 
   const handleCheck = () => {
     console.log("ok");
@@ -112,7 +179,7 @@ export default function Form() {
   };
 
   return (
-    <form ref={form} className="form" onSubmit={handleSubmit}>
+    <form ref={form} className="form" >
       <header>
         <div className="TitleSecure">
           <h3>Payment Details </h3>
@@ -120,7 +187,7 @@ export default function Form() {
         </div>
         <div className="Amont">
           <p> Amount: </p>
-          <label className="price">{price ? `$${price}` : "Loading..."}</label>
+          <label className="price">{price ? `$ ${parseFloat(price) + 5.00 + 2.00}` : "Loading..."}</label>
         </div>
       </header>
       <main>
@@ -167,7 +234,7 @@ export default function Form() {
             Accept terms of <Link to="#">confidientiality</Link>
           </p>
         </div>
-        <input disabled={checked} type="submit" value="Submit" className="btn" />
+        <input type="submit" value="Submit" className="btn" onClick={handleSubmit} />
       </main>
       <footer>
         <img className="img1" src="/images/methode.jpg" alt="" />
