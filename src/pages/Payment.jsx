@@ -169,6 +169,35 @@ export default function Form() {
       }
   });
 
+
+  const storedFormDataJSON = localStorage.getItem("shipping");
+  const storedFormData = JSON.parse(storedFormDataJSON);
+  console.log(storedFormData);
+
+  try {
+    const token = localStorage.getItem('token');
+    const decoded = jwtDecode(token);
+    const username = decoded.sub;
+
+      const response = await fetch('http://localhost:8080/shipping', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(storedFormData)
+      });
+
+      if (response.ok) {
+          console.log('Product sent successfully:', product);
+      } else {
+          console.error('Failed to send product:', product);
+      }
+  } catch (error) {
+      console.error('Error sending product:', error);
+  }
+
+
   };
   
 

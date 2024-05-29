@@ -13,17 +13,10 @@ const ProductListing = ({ categoryID }) => {
 
     const fetchProducts = async () => {
         try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                throw new Error('No token found');
-            }
-            const decoded = jwtDecode(token);
-            const username = decoded.sub;
-            
+
             const response = await axios.get(`http://localhost:8080/api/getproductsCategory/${categoryID}`, {
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Content-Type': 'application/json'
                 }
             });
 

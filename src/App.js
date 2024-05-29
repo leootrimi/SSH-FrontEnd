@@ -15,8 +15,10 @@ import HomePage from "./pages/Home";
 import MenPage from "./pages/MenPage.jsx";
 import WomenPage from "./pages/WomenPage.jsx";
 import Payment from "./pages/Payment.jsx";
-import ShoppingCart from "./pages/ShoppingCart.jsx"
-import OrdersPage from "./pages/OrdersPage.jsx"
+import ShoppingCart from "./pages/ShoppingCart.jsx";
+import OrdersPage from "./pages/OrdersPage.jsx";
+import DeleteAcc from "./components/Account/DeleteAcc.jsx";
+import Shipping from "./components/Shipping/Shipping.jsx";
 
 import ChangePass from './components/Account/ChangePass.jsx';
 
@@ -31,6 +33,7 @@ function App() {
           <Route path="/men" element={<MenPage />} />
           <Route path="/productL" exact element={<ProductListing />} />
           <Route path="/productL/:productId" exact element={<ProductDetail />} />
+          <Route path='/shipping' element={<Shipping />} />
 
           <Route path="/kids" element={<ShopCategory category="kids" />} />   
           <Route path="/contact" element={<ContactForm/>} />
@@ -42,7 +45,8 @@ function App() {
           <Route path="/login" element={<Login />} />   
           <Route path="/register" element={<SignupForm />} />   
           <Route path="/account" element={<AccountDetails />} />   
-          <Route path="/account/password" element={<ChangePass />} />  
+          <Route path="/account/password" element={<ChangePass />} />
+          <Route path="/account/delete" element={<DeleteAcc />} />   
 
           <Route path='/cart' element={<ShoppingCart />} />
           <Route path='/orders' element={<OrdersPage />} />

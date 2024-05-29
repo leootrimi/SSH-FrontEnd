@@ -118,7 +118,7 @@ const AccountDetails = () => {
                 <ul>
                     <li><Link to="/account/password">Change password</Link></li>
                     <li><Link to="/account/orders">Orders</Link></li>
-                    <li><Link to="/account/settings">Account Settings</Link></li>
+                    <li><Link to="/account/delete">Account Settings</Link></li>
                 </ul>
             </div>
             

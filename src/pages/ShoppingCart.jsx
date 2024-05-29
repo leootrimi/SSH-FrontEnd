@@ -68,6 +68,7 @@ function ShoppingCart() {
         } catch (error) {
             console.error("Error fetching cart count:", error);
         }
+      
 
 
       try {
@@ -169,12 +170,12 @@ function ShoppingCart() {
       <div className="total">
         <span className="total-label">Total:</span>
         <span className="total-amount">
-          ${parseFloat(price) + 5.00 + 2.00} {/* Total calculation including shipping and tax */}
+          ${(parseFloat(price) + 5.00 + 2.00).toFixed(2)} {/* Total calculation including shipping and tax */}
         </span>
       </div>
     </div>
     <button className="checkout-button"  onClick={() => {
-          navigate('/checkout');
+          navigate('/shipping');
         }}>Checkout</button>
   </div>
 </div>
