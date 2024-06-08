@@ -154,7 +154,7 @@ function ShoppingCart() {
         </li>
       ))}
     </ul>
-    <div className="summary-details">
+    {/* <div className="summary-details"> */}
       <div className="subtotal">
         <span className="subtotal-label">Subtotal: </span>
         <span className="subtotal-amount">${price}</span>
@@ -173,7 +173,7 @@ function ShoppingCart() {
           ${(parseFloat(price) + 5.00 + 2.00).toFixed(2)} {/* Total calculation including shipping and tax */}
         </span>
       </div>
-    </div>
+    {/* </div> */}
     <button className="checkout-button"  onClick={() => {
           navigate('/shipping');
         }}>Checkout</button>

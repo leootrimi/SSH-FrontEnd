@@ -22,6 +22,7 @@ const NavBar = () => {
     const handleLogout = () => {
         localStorage.removeItem('token'); 
         navigate('/');
+        window.location.reload();
     };
 
     const toggleDropdown = () => {

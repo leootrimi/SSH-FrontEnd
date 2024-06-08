@@ -115,6 +115,7 @@ export default function Form() {
       numberOfProducts: size.length,
       fullName: username,
       username: username
+      
     }
 
     const response1 = await fetch(`http://localhost:8080/orders`, {
@@ -135,21 +136,24 @@ export default function Form() {
 
     const product = localStorage.getItem("products", )
     const size = JSON.parse(product)
+    console.log(size);
     size.forEach(async size => {
       try {
         const token = localStorage.getItem('token');
         const decoded = jwtDecode(token);
         const username = decoded.sub;
           const ordersData = {
-            id: size.id,
             title: size.title,
             price: size.price,
             description: size.description,
             image: size.image,
-            category: size.category.id
+            category: size.category.id,
+            username: username
+            
           }
 
           console.log(ordersData);
+          console.log(JSON.stringify(ordersData));
           const response = await fetch('http://localhost:8080/sold', {
               method: 'POST',
               headers: {

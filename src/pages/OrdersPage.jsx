@@ -4,6 +4,9 @@ import { jwtDecode } from "jwt-decode";
 
 function OrdersPage() {
   const [data, setData] = useState(null);
+  const [price, setPrice] = useState(null);
+  const [count, setCount] = useState(null);
+  const [date, setDate] = useState(null);
 
   useEffect(() => {
     const fetchCartData = async () => {
@@ -12,13 +15,14 @@ function OrdersPage() {
         const decoded = jwtDecode(token);
         const username = decoded.sub;
 
-        const response = await fetch(`http://localhost:8080/carts/findByUsername/${username}`, {
+        const response = await fetch(`http://localhost:8080/sold/product/${username}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           }
         });
+        
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -30,6 +34,76 @@ function OrdersPage() {
       } catch (error) {
         console.error("Error fetching cart data:", error);
       }
+
+      try{
+        const token = localStorage.getItem('token');
+        const decoded = jwtDecode(token);
+        const username = decoded.sub;
+      const total = await fetch(`http://localhost:8080/sold/price/${username}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      
+      });
+      const data1 = await total.json();
+        setPrice(data1);
+        console.log(data1);
+    } catch (error) {
+      console.error("Error fetching cart data:", error);
+    }
+
+    try{
+      const token = localStorage.getItem('token');
+      const decoded = jwtDecode(token);
+      const username = decoded.sub;
+    const count = await fetch(`http://localhost:8080/sold/count/${username}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    
+    });
+    const data1 = await count.json();
+      setCount(data1);
+      console.log(data1);
+  } catch (error) {
+    console.error("Error fetching cart data:", error);
+  }
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('No token found in localStorage');
+    }
+
+    const decoded = jwtDecode(token);
+    const username = decoded.sub;
+
+    const response = await fetch(`http://localhost:8080/sold/date/${username}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    const text = await response.text();
+    setDate(text);
+    console.log('Raw Response Text:', text);
+    
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = JSON.parse(text);
+    console.log('Parsed JSON Data:', data);
+    setCount(data);
+} catch (error) {
+    
+}
+
     };
 
     fetchCartData();
@@ -40,15 +114,15 @@ function OrdersPage() {
       <div className="orders-container">
         <div className="order-box">
           <h2>Total Spent</h2>
-          <p>$500</p>
+          <p>{price} $</p>
         </div>
         <div className="order-box">
           <h2>Product Bought</h2>
-          <p>5</p>
+          <p>{count}</p>
         </div>
         <div className="order-box">
           <h2>Last Order</h2>
-          <p>May 25, 2024</p>
+          <p>{date}</p>
         </div>
       </div>
       <div className="Products">
