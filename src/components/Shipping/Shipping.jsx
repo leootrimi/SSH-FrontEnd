@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import {jwtDecode} from 'jwt-decode';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import './Shipping.css';
 
 const Shipping = () => {
-    const [formData, setFormData] = useState({
-        recipientName: '',
-        address: '',
-        city: '',
-        state: '',
-        zipCode: '',
-        country: '',
-        phoneNumber: '',
-    });
-
     const navigate = useNavigate();
-
     const [price, setPrice] = useState(0);
 
     useEffect(() => {
@@ -49,42 +40,56 @@ const Shipping = () => {
         fetchCartData();
     }, []);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
-        localStorage.setItem("shipping", JSON.stringify(formData));
-        navigate('/checkout');
-    };
-
+    const formik = useFormik({
+        initialValues: {
+            recipientName: '',
+            address: '',
+            city: '',
+            state: '',
+            zipCode: '',
+            country: '',
+            phoneNumber: '',
+        },
+        validationSchema: Yup.object({
+            recipientName: Yup.string().required('Required'),
+            address: Yup.string().required('Required'),
+            city: Yup.string().required('Required'),
+            state: Yup.string().required('Required'),
+            zipCode: Yup.string().required('Required'),
+            country: Yup.string().required('Required'),
+            phoneNumber: Yup.string().required('Required'),
+        }),
+        onSubmit: values => {
+            console.log(values);
+            localStorage.setItem("shipping", JSON.stringify(values));
+            navigate('/checkout');
+        },
+    });
 
     return (
         <div className="form-container">
-            <form className="address-form">
+            <form className="address-form" onSubmit={formik.handleSubmit}>
                 <div className="form-row">
                     <label>Recipient Name:</label>
                     <input
                         type="text"
                         name="recipientName"
-                        value={formData.recipientName}
-                        onChange={handleChange}
+                        {...formik.getFieldProps('recipientName')}
                     />
+                    {formik.touched.recipientName && formik.errors.recipientName ? (
+                        <div className="error">{formik.errors.recipientName}</div>
+                    ) : null}
                 </div>
                 <div className="form-row">
                     <label>Address:</label>
                     <input
                         type="text"
                         name="address"
-                        value={formData.address}
-                        onChange={handleChange}
+                        {...formik.getFieldProps('address')}
                     />
+                    {formik.touched.address && formik.errors.address ? (
+                        <div className="error">{formik.errors.address}</div>
+                    ) : null}
                 </div>
                 <div className="form-row">
                     <div className="form-group">
@@ -92,18 +97,22 @@ const Shipping = () => {
                         <input
                             type="text"
                             name="city"
-                            value={formData.city}
-                            onChange={handleChange}
+                            {...formik.getFieldProps('city')}
                         />
+                        {formik.touched.city && formik.errors.city ? (
+                            <div className="error">{formik.errors.city}</div>
+                        ) : null}
                     </div>
                     <div className="form-group">
                         <label>State:</label>
                         <input
                             type="text"
                             name="state"
-                            value={formData.state}
-                            onChange={handleChange}
+                            {...formik.getFieldProps('state')}
                         />
+                        {formik.touched.state && formik.errors.state ? (
+                            <div className="error">{formik.errors.state}</div>
+                        ) : null}
                     </div>
                 </div>
                 <div className="form-row">
@@ -112,18 +121,22 @@ const Shipping = () => {
                         <input
                             type="text"
                             name="zipCode"
-                            value={formData.zipCode}
-                            onChange={handleChange}
+                            {...formik.getFieldProps('zipCode')}
                         />
+                        {formik.touched.zipCode && formik.errors.zipCode ? (
+                            <div className="error">{formik.errors.zipCode}</div>
+                        ) : null}
                     </div>
                     <div className="form-group">
                         <label>Country:</label>
                         <input
                             type="text"
                             name="country"
-                            value={formData.country}
-                            onChange={handleChange}
+                            {...formik.getFieldProps('country')}
                         />
+                        {formik.touched.country && formik.errors.country ? (
+                            <div className="error">{formik.errors.country}</div>
+                        ) : null}
                     </div>
                 </div>
                 <div className="form-row">
@@ -131,11 +144,13 @@ const Shipping = () => {
                     <input
                         type="text"
                         name="phoneNumber"
-                        value={formData.phoneNumber}
-                        onChange={handleChange}
+                        {...formik.getFieldProps('phoneNumber')}
                     />
+                    {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
+                        <div className="error">{formik.errors.phoneNumber}</div>
+                    ) : null}
                 </div>
-                <button type="submit" onClick={handleSubmit}>Proceed to Checkout</button>
+                <button type="submit">Proceed to Checkout</button>
             </form>
             <div className="summary-details">
                 <div className="subtotal">
